@@ -14,6 +14,8 @@ public class Driver extends JPanel implements MouseListener, ActionListener {
 	ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 
 	public static int worldSize = 700;
+	
+	Player player = new Player(50);
 
 	public void paint(Graphics g) {
 
@@ -49,6 +51,8 @@ public class Driver extends JPanel implements MouseListener, ActionListener {
 			e.paint(g);
 
 		}
+		
+		player.paint(g);
 	}
 
 	public Driver() {
@@ -58,9 +62,13 @@ public class Driver extends JPanel implements MouseListener, ActionListener {
 		frame.setSize(worldSize, worldSize);
 		frame.add(this);
 
-		for (int i = 0; i < 100; i++) {
+		/*
+		
+		for (int i = 0; i < 10; i++) {
 			enemies.add(new Enemy());
 		}
+
+		*/
 
 		Timer t = new Timer(16, this);
 		t.start();
