@@ -45,6 +45,25 @@ public class Driver extends JPanel implements MouseListener, ActionListener {
 				}
 			}
 		}
+		
+		for (int i = 0; i < enemies.size(); i++) {
+			
+			double distance = Math.sqrt(Math
+					.pow((enemies.get(i).getX() + enemies.get(i).getRad() - player.getX() - player.getRad()), 2)
+					+ Math.pow((enemies.get(i).getY() + enemies.get(i).getRad() - player.getY() - player.getRad()), 2));
+			
+			if (distance < enemies.get(i).getRad() + player.getRad()) {
+				
+				if (enemies.get(i).getRad() < player.getRad()) {
+
+					player.setRad(player.getRad() + enemies.get(i).getRad());
+					enemies.remove(enemies.indexOf(enemies.get(i)));
+
+				}
+				
+			}
+			
+		}
 
 		for (Enemy e : enemies) {
 
@@ -62,13 +81,10 @@ public class Driver extends JPanel implements MouseListener, ActionListener {
 		frame.setSize(worldSize, worldSize);
 		frame.add(this);
 
-		/*
-		
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 5; i++) {
 			enemies.add(new Enemy());
 		}
 
-		*/
 
 		Timer t = new Timer(16, this);
 		t.start();
